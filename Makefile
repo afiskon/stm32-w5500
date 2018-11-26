@@ -213,13 +213,10 @@ clean:
 	-rm -fR .dep $(BUILD_DIR)
   
 flash: all
-	st-flash --reset write build/$(TARGET).bin 0x8000000
-
-erase:
-	st-flash --reset erase
+	sudo openocd -f ./ftdi.cfg -f target/stm32f4x.cfg -c "init; reset halt; flash write_image erase build/main.hex; reset; exit"
 
 uart:
-	screen /dev/ttyACM0
+	screen /dev/ttyUSB1
 
 #######################################
 # dependencies
