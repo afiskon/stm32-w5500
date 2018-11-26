@@ -216,7 +216,7 @@ flash: all
 	sudo openocd -f ./ftdi.cfg -f target/stm32f4x.cfg -c "init; reset halt; flash write_image erase build/main.hex; reset; exit"
 
 uart:
-	screen /dev/ttyUSB1
+	screen /dev/ttyUSB1 9600
 
 #######################################
 # dependencies
